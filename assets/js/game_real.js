@@ -645,7 +645,7 @@ function checkAnswer(wordRow, answer){
 function submitWord(wordRow){
 	if(nextRowBlock > 0 && nextRowBlock % maxBlock == 0){
 		let answer = wordRow.innerText.replace(/[\n\r]/g, '');
-		if(fullList.includes(answer)){
+		if(YBM김_4학년_전체.includes(answer)){
 			if(difficulty == 'difficult'){
 				for(i = 0; i < mustUse.length; i++){
 					if(!answer.includes(mustUse[i])){
