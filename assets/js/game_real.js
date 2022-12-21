@@ -225,7 +225,7 @@ function changeHelpView(){
 function setGlobal(){
 	for(i = 1; i < 3; i++){
 		for(j = 3; j < 6; j++){
-			let lsItem = (i == 1)? 'YBM김_4학년_1학기' + j : ((i == 2)? 'YBM김_4학년_2학기' + j : 'YBM김_4학년_전체' + j );
+			let lsItem = (i == 1)? 'YBM김_4학년_1학기_' + j : ((i == 2)? 'YBM김_4학년_2학기_' + j : 'YBM김_4학년_전체_' + j );
 			if (localStorage.getItem(lsItem) === null) {
 				localStorage.setItem(lsItem, 0);
 			}
