@@ -80,15 +80,7 @@ function openModal(type, notification){
 			modalBtn.className = 'modalBtn';
 			modalBtn.innerText = (i == 0)? 'YBM김_4학년_1학기' : ((i == 1)? 'YBM김_4학년_2학기' : 'YBM김_4학년_전체');
 			modalBtn.addEventListener('click', () => { 
-				level = this.innerText
-				if(gameOn == 1){
-					userScore = 0;
-					currentStreak = 0;
-					gameOver();
-					document.removeEventListener('keyup', restart, false);
-					gameStart();
-				}else{
-					startMenu();
+				level = modalBtn.innerText
 				}
 			})
 			modal.append(modalBtn);
