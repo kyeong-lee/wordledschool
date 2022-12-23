@@ -223,7 +223,7 @@ function changeHelpView(){
 }
 
 function setGlobal(){
-	for(i = 1; i < 3; i++){
+	for(i = 1; i < 4; i++){
 		for(j = 3; j < 6; j++){
 			let lsItem = (i == 1)? 'YBM김_4학년_1학기_' + j : ((i == 2)? 'YBM김_4학년_2학기_' + j : 'YBM김_4학년_전체_' + j );
 			if (localStorage.getItem(lsItem) === null) {
@@ -232,6 +232,7 @@ function setGlobal(){
 		}
 	}
 
+	/*
 	YBM김_4학년_1학기_3 = localStorage.getItem('YBM김_4학년_1학기_3');
 	YBM김_4학년_2학기_3 = localStorage.getItem('YBM김_4학년_2학기_3');
 	YBM김_4학년_전체_3 = localStorage.getItem('YBM김_4학년_전체_3');
@@ -241,6 +242,7 @@ function setGlobal(){
 	YBM김_4학년_1학기_5 = localStorage.getItem('YBM김_4학년_1학기_5');
 	YBM김_4학년_2학기_5 = localStorage.getItem('YBM김_4학년_2학기_5');
 	YBM김_4학년_전체_5 = localStorage.getItem('YBM김_4학년_전체_5');
+	*/
 
 	gameFin = 0;
 	currentRow = 0;
@@ -517,7 +519,7 @@ function deleteClick(){
 }
 
 function levelSelect(){
-	level = this.innerText.toLowerCase().replace(/ /g, "");
+	level = this.innerText      //.toLowerCase().replace(/ /g, "");
 	if(gameOn == 1){
 		userScore = 0;
 		currentStreak = 0;
