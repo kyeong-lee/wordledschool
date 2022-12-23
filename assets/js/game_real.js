@@ -327,14 +327,14 @@ function gameStart(){
 		giveUpBtn.addEventListener('click', quitQlick);
 		navBar.append(giveUpBtn);
 
-		let levelSelect = document.createElement('button');
-		levelSelect.id = 'levelSelectBtn';
-		levelSelect.className = 'btn';
-		levelSelect.innerText = level;
-		levelSelect.addEventListener('click', levelModal = function(event){
+		let levelSelectBtn = document.createElement('button');
+		levelSelectBtn.id = 'levelSelectBtn';
+		levelSelectBtn.className = 'btn';
+		levelSelectBtn.innerText = level;
+		levelSelectBtn.addEventListener('click', levelModal = function(event){
 			openModal('levelSelect');
 		})
-		navBar.append(levelSelect);
+		navBar.append(levelSelectBtn);
 	container.append(navBar);
 
 	let gameArea = document.createElement('div');
