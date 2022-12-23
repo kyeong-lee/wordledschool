@@ -80,7 +80,8 @@ function openModal(type, notification){
 			modalBtn.className = 'modalBtn';
 			modalBtn.innerText = (i == 0)? 'YBM김_4학년_1학기' : ((i == 1)? 'YBM김_4학년_2학기' : 'YBM김_4학년_전체');
 			modalBtn.addEventListener('click', () => { 
-				level = modalBtn.innerText
+				level = this.innerText
+				startMenu()
 				}
 			})
 			modal.append(modalBtn);
