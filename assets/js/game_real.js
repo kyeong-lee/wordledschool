@@ -1,5 +1,5 @@
 let currentRow = 0;let nextRowBlock = 0;let score = 0;let remNotification = 0;let gameFin = 0;let gameOn = 0;let maxBlock = 5;let level = 'YBM김_4학년_전체';let difficulty = 'easy';let mustUse = '';let bestStreak = 0;let currentStreak = 0;let userScore = 0;
-let YBM김_4학년_1학기_3 = 0;let YBM김_4학년_2학기_3 = 0;let YBM김_4학년_전체_3 = 0;let YBM김_4학년_1학기_4 = 0;let YBM김_4학년_2학기_4 = 0;let YBM김_4학년_전체_4 = 0;let YBM김_4학년_1학기_5 = 0;let YBM김_4학년_2학기_5 = 0;let YBM김_4학년_전체_5 = 0;
+// let YBM김_4학년_1학기_3 = 0;let YBM김_4학년_2학기_3 = 0;let YBM김_4학년_전체_3 = 0;let YBM김_4학년_1학기_4 = 0;let YBM김_4학년_2학기_4 = 0;let YBM김_4학년_전체_4 = 0;let YBM김_4학년_1학기_5 = 0;let YBM김_4학년_2학기_5 = 0;let YBM김_4학년_전체_5 = 0;
 
 const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
 
@@ -223,6 +223,7 @@ function changeHelpView(){
 }
 
 function setGlobal(){
+	/*
 	for(i = 1; i < 4; i++){
 		for(j = 3; j < 6; j++){
 			let lsItem = (i == 1)? 'YBM김_4학년_1학기_' + j : ((i == 2)? 'YBM김_4학년_2학기_' + j : 'YBM김_4학년_전체_' + j );
@@ -232,7 +233,6 @@ function setGlobal(){
 		}
 	}
 
-	/*
 	YBM김_4학년_1학기_3 = localStorage.getItem('YBM김_4학년_1학기_3');
 	YBM김_4학년_2학기_3 = localStorage.getItem('YBM김_4학년_2학기_3');
 	YBM김_4학년_전체_3 = localStorage.getItem('YBM김_4학년_전체_3');
@@ -253,7 +253,7 @@ function setGlobal(){
 }
 
 function startMenu(){
-	if(document.getElementById('wordscript') != null){
+	if(document.getElementById('wordscript') !== null){
 		document.getElementById('wordscript').remove();
 	}
 	let script = document.createElement('script');
