@@ -81,7 +81,6 @@ function openModal(type, notification){
 			modalBtn.innerText = (i == 0)? 'YBM김_4학년_1학기' : ((i == 1)? 'YBM김_4학년_2학기' : 'YBM김_4학년_전체');
 			modalBtn.addEventListener('click', () => { 
 				level = this.innerText
-				/*
 				if(gameOn == 1){
 					userScore = 0;
 					currentStreak = 0;
@@ -91,7 +90,6 @@ function openModal(type, notification){
 				}else{
 					startMenu();
 				}
-				*/
 			})
 			modal.append(modalBtn);
 		}
@@ -532,7 +530,7 @@ function deleteClick(){
 }
 
 function levelSelect(){
-	// level = this.innerText
+	level = this.innerText
 	if(gameOn == 1){
 		userScore = 0;
 		currentStreak = 0;
