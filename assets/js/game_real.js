@@ -79,7 +79,8 @@ function openModal(type, notification){
 			let modalBtn = document.createElement('button');
 			modalBtn.className = 'modalBtn';
 			modalBtn.innerText = (i == 0)? 'YBM김_4학년_1학기' : ((i == 1)? 'YBM김_4학년_2학기' : 'YBM김_4학년_전체');
-			modalBtn.addEventListener('click', levelSelect);
+			modalBtn.addEventListener('click', () => { 
+				level = this.innerText});
 			modal.append(modalBtn);
 		}
 	}
