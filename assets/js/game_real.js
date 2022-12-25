@@ -1,10 +1,14 @@
 let currentRow = 0;let nextRowBlock = 0;let score = 0;let remNotification = 0;let gameFin = 0;let gameOn = 0;let maxBlock = 5;let level = 'YBM김_4학년_전체';let difficulty = 'easy';let mustUse = '';let bestStreak = 0;let currentStreak = 0;let userScore = 0;
 let YBM김_4학년_1학기_3 = 0;let YBM김_4학년_2학기_3 = 0;let YBM김_4학년_전체_3 = 0;let YBM김_4학년_1학기_4 = 0;let YBM김_4학년_2학기_4 = 0;let YBM김_4학년_전체_4 = 0;let YBM김_4학년_1학기_5 = 0;let YBM김_4학년_2학기_5 = 0;let YBM김_4학년_전체_5 = 0;
+
 const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+
 let container = document.createElement('div');
 container.id = 'container';
 document.body.append(container);
+
 startMenu();
+
 function showScores(modal, type, diff){
 	let msBlock = document.createElement('div');
 	msBlock.id = 'msBlock';
@@ -26,6 +30,7 @@ function showScores(modal, type, diff){
 		msBlock.append(modalScoreBlock);
 	}
 }
+
 function showHelp(modal, type){
 	let exampleWords = ['SUNNY', 'WORLD', 'TITAN'];
 	let mhBlock = document.createElement('div');
@@ -34,8 +39,10 @@ function showHelp(modal, type){
 	mhbHead.className = 'mhbHead';
 	mhbHead.innerText = (type == '게임')? '단어를 맞추기 위한 6번의 도전 기회가 있습니다.\n\n4학년에서 배운 단어만 입력할 수 있습니다.\n정답을 제출하려면 ENTER키를 눌러주세요.\n\n매 시도마다 알파벳의 색이 변합니다.' : '\n4학년 1학기와 4학년 2학기, \n그리고 4학년 전체 범위를 선택할 수 있습니다.\n\n';
 	mhBlock.append(mhbHead);
+
 	let mhbBody = document.createElement('div');
 	mhbBody.className = 'mhbBody';
+
 	if(type == '게임'){
 		for(i = 0; i < exampleWords.length; i++){
 			let rand = Math.floor(Math.random() * 5);
@@ -63,6 +70,7 @@ function showHelp(modal, type){
 	mhBlock.append(mhbBody);
 	modal.append(mhBlock);
 }
+
 function openModal(type, notification){
 	let modal = document.createElement('div');
 	modal.id = 'modal';
@@ -104,6 +112,7 @@ function openModal(type, notification){
 		message.className = 'modalMessage';
 		message.innerHTML = notification;
 		modal.append(message);
+
 		for(i = 0; i < 4; i++){
 			let modalScoreBlock = document.createElement('div');
 			modalScoreBlock.className = 'msBlock';
@@ -132,6 +141,7 @@ function openModal(type, notification){
 			scoreType.innerText = (i == 0)? 'SCORE' : 'STREAK';
 			modal.append(scoreType);
 		}
+
 		for(i = 0; i < 4; i++){
 			let scoreBtn = document.createElement('button');
 			scoreBtn.className = (i == 0)? 'scoreBtnActive' : 'scoreBtn';
@@ -155,16 +165,19 @@ function openModal(type, notification){
 		}
 		showHelp(modal, '게임');
 	}
+
 	container.prepend(modal);
 	setTimeout(function(){
 		modal.style.cssText = 'opacity: 1';
 	}, 1);
+
 	let shadowBack = document.createElement('div');
 	shadowBack.id = 'shadowBack';
 	container.prepend(shadowBack);
 	setTimeout(function(){
 		shadowBack.style.cssText = 'opacity: .35';
 	}, 1);
+
 	let modalClose = document.createElement('button');
 	modalClose.id = 'modalClose';
 	modalClose.innerText = '닫기';
@@ -173,13 +186,16 @@ function openModal(type, notification){
 	modalClose.addEventListener('click', closeModal);
 	modal.prepend(modalClose);
 }
+
 function openWindow(url, windowName){
 	window.open(url, windowName,'width=550,height=450,left=150,top=200,toolbar=0,status=0,data-action=share/whatsapp/share')
 }
+
 function addLogo(){
 	let logo = document.createElement('div');
 	logo.className = 'logo';
 	logo.addEventListener("click", logoClick);
+
 	let domName = '4학년영어단어';
 	for(i = 0; i < domName.length; i++){
 		let spanClass = (i == 0 || i % 2 == 0)? 'logo_green' : 'logo_gold';
@@ -188,8 +204,10 @@ function addLogo(){
 		logoSpan.innerText = domName[i];
 		logo.append(logoSpan);
 	}
+
 	container.append(logo);
 }
+
 function changeHelpView(){
 	let j = event.currentTarget.j;
 	let modal = event.currentTarget.modal;
@@ -203,16 +221,17 @@ function changeHelpView(){
 		showHelp(modal, '옵션');
 	}
 }
+
 function setGlobal(){
 	for(i = 1; i < 3; i++){
 		for(j = 3; j < 6; j++){
-			let lsItem = (i == 1)? 'YBM김_4학년_1학기' + j : ((i == 2)? 'YBM김_4학년_2학기' + j : 'YBM김_4학년_전체' + j );
 			let lsItem = (i == 1)? 'YBM김_4학년_1학기_' + j : ((i == 2)? 'YBM김_4학년_2학기_' + j : 'YBM김_4학년_전체_' + j );
 			if (localStorage.getItem(lsItem) === null) {
 				localStorage.setItem(lsItem, 0);
 			}
 		}
 	}
+
 	YBM김_4학년_1학기_3 = localStorage.getItem('YBM김_4학년_1학기_3');
 	YBM김_4학년_2학기_3 = localStorage.getItem('YBM김_4학년_2학기_3');
 	YBM김_4학년_전체_3 = localStorage.getItem('YBM김_4학년_전체_3');
@@ -222,6 +241,7 @@ function setGlobal(){
 	YBM김_4학년_1학기_5 = localStorage.getItem('YBM김_4학년_1학기_5');
 	YBM김_4학년_2학기_5 = localStorage.getItem('YBM김_4학년_2학기_5');
 	YBM김_4학년_전체_5 = localStorage.getItem('YBM김_4학년_전체_5');
+
 	gameFin = 0;
 	currentRow = 0;
 	nextRowBlock = 0;
@@ -229,6 +249,7 @@ function setGlobal(){
 	remNotification = 0;
 	mustUse = '';
 }
+
 function startMenu(){
 	if(document.getElementById('wordscript') != null){
 		document.getElementById('wordscript').remove();
@@ -248,11 +269,13 @@ function startMenu(){
 		menuBtn.className = 'menuBtn';
 		menuBtn.innerText = (i == 0)? maxBlock + ' 글자' : ((i == 1)? level : ((i == 2)? difficulty : ((i == 3)? '최고점수' : ((i == 4)? '도움말' : '게임시작'))));
 		menuBtn.j = i;
+
 		menuBtn.addEventListener("click", menuClick);
 		menu.append(menuBtn);
 	}
 	container.append(menu);
 }
+
 function gameOver(){
 	gameFin = 1;
 	document.removeEventListener('keyup', deleteClick, false);
@@ -265,13 +288,16 @@ function gameOver(){
 	document.removeEventListener('click', difficultyModal, false);
 	document.removeEventListener('click', closeModal, false);
 }
+
 function gameStart(){
 	setGlobal();
 	container.innerHTML = '';
 	let wordType = (level == 'YBM김_4학년_1학기')? YBM김_4학년_1학기 : ((level == 'YBM김_4학년_2학기')? YBM김_4학년_2학기 : YBM김_4학년_전체);
 	let rand = Math.floor(Math.random() * wordType.length);
 	chosenWord = wordType[rand].toUpperCase();
+
 	addLogo();
+
 	let navBar = document.createElement('div');
 	navBar.className = 'nav_bar';
 		let difficultySelect = document.createElement('button');
@@ -280,12 +306,14 @@ function gameStart(){
 		difficultySelect.innerText = difficulty;
 		difficultySelect.addEventListener('click', difficultyModal);
 		navBar.append(difficultySelect);
+
 		let giveUpBtn = document.createElement('button');
 		giveUpBtn.id = 'giveUpBtn';
 		giveUpBtn.className = 'btn';
 		giveUpBtn.innerText = '포기';
 		giveUpBtn.addEventListener('click', quitQlick);
 		navBar.append(giveUpBtn);
+
 		let levelSelect = document.createElement('button');
 		levelSelect.id = 'levelSelectBtn';
 		levelSelect.className = 'btn';
@@ -295,6 +323,7 @@ function gameStart(){
 		})
 		navBar.append(levelSelect);
 	container.append(navBar);
+
 	let gameArea = document.createElement('div');
 	gameArea.className = 'game_area';
 	for(i = 0; i < 6; i++){
@@ -308,43 +337,55 @@ function gameStart(){
 		gameArea.append(row);
 	}
 	container.append(gameArea);
+
 	let notification = document.createElement('div');
 	notification.id = 'notification';
 	notification.innerText = '정답을 맞춰봅시다!'
 	container.append(notification);
+
 	let keyLayoutTop = 'QWERTYUIOP';
 	let keyLayoutMid = 'ASDFGHJKL';
 	let keyLayoutBot = 'ZXCVBNM';
+
 	let keyboard = document.createElement('div');
 	keyboard.id = 'keyboard';
+
 		let topKeys = document.createElement('div');
 		topKeys.id = 'topKeys';
 		addKeys(topKeys, keyLayoutTop, 'keyboardKey_s');
 		keyboard.append(topKeys);
+
 		let midKeys = document.createElement('div');
 		midKeys.id = 'midKeys';
 		addKeys(midKeys, keyLayoutMid, 'keyboardKey_m');
 		keyboard.append(midKeys);
+
 		let botKeys = document.createElement('div');
 		botKeys.id = 'botKeys';
+
 		let deleteKey = document.createElement('span');
 		deleteKey.className = 'keyboardKey_l';
 		deleteKey.innerHTML = '&#x2190;';
 		deleteKey.addEventListener("click", deleteClick);
 		botKeys.append(deleteKey);
 		addKeys(botKeys, keyLayoutBot, 'keyboardKey_s');
+
 		let enterKey = document.createElement('span');
 		enterKey.className = 'keyboardKey_l';
 		enterKey.innerText = 'Enter';
 		enterKey.addEventListener("click", enterClick);
 		botKeys.append(enterKey);
 		keyboard.append(botKeys);
+
 	container.append(keyboard);
+
 	document.addEventListener('keyup', keyPress);
 }
+
 function difficultyModal(){
 	openModal('difficultySelect');
 }
+
 function keyPress(event) {
 	if(gameFin == 0){
 		let alphabet = 'abcdefghijklmnopqrstuvwxyz';
@@ -363,6 +404,7 @@ function keyPress(event) {
 		}
 	}
 }
+
 function quitQlick(){
 	if(gameFin == 0){
 		let url = '<a href="https://duckduckgo.com/?q=%22'+ chosenWord +'%22+%22definition%22&ia=definition" target="_blank">' + chosenWord + '</a>';
@@ -370,11 +412,13 @@ function quitQlick(){
 		currentStreak = 0;
 		userScore = userScore - 15;
 		gameOver();
+
 		setTimeout(function(){
 			openModal('endScore', notification);
 		}, 250);
 	}
 }
+
 function enterClick(){
 	if(gameFin == 0){
 		let wordRow = document.getElementsByClassName('row')[currentRow];
@@ -382,11 +426,13 @@ function enterClick(){
 		submitWord(wordRow);
 	}
 }
+
 function logoClick(event) {
 	gameOn = 0;
 	container.innerHTML = '';
 	startMenu();
 }
+
 function menuClick(event) {
 	let j = event.currentTarget.j;
 	let modalType = (j == 0)? 'charSelect' : ((j == 1)? 'levelSelect' : ((j == 2)? 'difficultySelect' : ((j == 3)? 'highScores' : '도움말')));
@@ -397,6 +443,7 @@ function menuClick(event) {
 		gameStart();
 	}
 }
+
 function restart(event) {
 	if (event.key === 'Enter') {
 		document.removeEventListener('keyup', restart, false);
@@ -404,11 +451,13 @@ function restart(event) {
 		gameStart();
 	}
 }
+
 function restartClick(){
 	document.removeEventListener('keyup', restart, false);
 	document.removeEventListener('click', restartClick, false);
 	gameStart();
 }
+
 function difficultySelect(){
 	difficulty = this.innerText.toLowerCase();
 	if(gameOn == 1){
@@ -433,6 +482,7 @@ function charSelect(){
 		startMenu();
 	}
 }
+
 function changeScore(){
 	let j = event.currentTarget.j;
 	let modal = event.currentTarget.modal;
@@ -446,6 +496,7 @@ function changeScore(){
 		showScores(modal, 'streak', this.innerText.toLowerCase());
 	}
 }
+
 function closeModal(){
 	let modal = event.currentTarget.modal;
 	let shadowBack = event.currentTarget.shadowBack;
@@ -456,6 +507,7 @@ function closeModal(){
 		shadowBack.remove();
 	}, 355);
 }
+
 function deleteClick(){
 	if(gameFin == 0){
 		let wordRow = document.getElementsByClassName('row')[currentRow];
@@ -463,6 +515,7 @@ function deleteClick(){
 		deleteLetter(rowBlockEl);
 	}
 }
+
 function levelSelect(){
 	level = this.innerText.toLowerCase().replace(/ /g, "");
 	if(gameOn == 1){
@@ -475,6 +528,7 @@ function levelSelect(){
 		startMenu();
 	}
 }
+
 function keyboardPress(){
 	if(gameFin == 0){
 		let layout = event.currentTarget.layout;
@@ -483,17 +537,21 @@ function keyboardPress(){
 		addLetter(rowBlockEl, layout);
 	}
 }
+
 function deleteLetter(rowBlockEl){
 	if(nextRowBlock > 0){
 		nextRowBlock--;
 		rowBlockEl[nextRowBlock].innerText = '';
 	}
 }
+
 function count(str, find) {
     return (str.split(find)).length - 1;
 }
+
 function checkAnswer(wordRow, answer){
 	let answerArray = [];
+
 	for(i = 0; i < answer.length; i++){
 		let letter = answer[i].toUpperCase();
 		answerArray.push(letter);
@@ -545,18 +603,23 @@ function checkAnswer(wordRow, answer){
 			}
 		}
 	}
+
 	if(score === maxBlock){
 		let scoreLevel = (level == 'beginner')? 1 : ((level == 'intermediate')? 2 : ((level == 'advanced')? 3 : 4));
 		userScore = userScore + ((scoreLevel * 10) - ((scoreLevel + 1) * currentRow));
+
 		if(userScore > localStorage.getItem('score' + difficulty + level)){
 			localStorage.setItem('score' + difficulty + level, userScore);
 		}
+
 		currentStreak++;
 		if(currentStreak > localStorage.getItem('streak' + difficulty + level)){
 			localStorage.setItem('streak' + difficulty + level, currentStreak);
 		}
+
 		let notification = 'Well done, you won! Click to play again';
 		gameOver();
+
 		setTimeout(function(){
 			openModal('endScore', notification);
 		}, 250);
@@ -567,6 +630,7 @@ function checkAnswer(wordRow, answer){
 		userScore = userScore - 10;
 		currentStreak = 0;
 		gameOver();
+
 		setTimeout(function(){
 			openModal('endScore', notification);
 		}, 250);
@@ -577,6 +641,7 @@ function checkAnswer(wordRow, answer){
 		currentRow++;
 	}
 }
+
 function submitWord(wordRow){
 	if(nextRowBlock > 0 && nextRowBlock % maxBlock == 0){
 		let answer = wordRow.innerText.replace(/[\n\r]/g, '');
@@ -600,6 +665,7 @@ function submitWord(wordRow){
 		document.getElementById('notification').innerText = '정답은' + maxBlock + ' 글자입니다.'
 	}
 }
+
 function addKeys(el, layout, keyClass){
 	for(i = 0; i < layout.length; i++){
 		let key = document.createElement('span');
@@ -611,6 +677,7 @@ function addKeys(el, layout, keyClass){
 		el.append(key);
 	}
 }
+
 function addLetter(rowBlockEl, letter){
 	if(remNotification == 0){
 		remNotification = 1;
