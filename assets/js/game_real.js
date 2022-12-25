@@ -223,7 +223,7 @@ function changeHelpView(){
 }
 
 function setGlobal(){
-	for(i = 1; i < 3; i++){
+	for(i = 1; i < 4; i++){
 		for(j = 3; j < 6; j++){
 			let lsItem = (i == 1)? 'YBM김_4학년_1학기_' + j : ((i == 2)? 'YBM김_4학년_2학기_' + j : 'YBM김_4학년_전체_' + j );
 			if (localStorage.getItem(lsItem) === null) {
@@ -267,7 +267,7 @@ function startMenu(){
 		let j = i;
 		let menuBtn = document.createElement('button');
 		menuBtn.className = 'menuBtn';
-		menuBtn.innerText = (i == 0)? maxBlock + ' 글자' : ((i == 1)? level : ((i == 2)? difficulty : ((i == 3)? '최고점수' : ((i == 4)? '도움말' : '게임시작'))));
+		menuBtn.innerText = (i == 0)? maxBlock + ' 글자' : ((i == 1)? level : ((i == 2)? difficulty : ((i == 3)? '최고점수: 업데이트 예정' : ((i == 4)? '도움말' : '게임시작'))));
 		menuBtn.j = i;
 
 		menuBtn.addEventListener("click", menuClick);
@@ -517,7 +517,7 @@ function deleteClick(){
 }
 
 function levelSelect(){
-	level = this.innerText.toLowerCase().replace(/ /g, "");
+	level = this.innerText.replace(/ /g, "");
 	if(gameOn == 1){
 		userScore = 0;
 		currentStreak = 0;
