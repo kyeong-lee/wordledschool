@@ -472,7 +472,7 @@ function keyPress(event) {
 
 function quitQlick(){
 	if(gameFin == 0){
-		let url = '<a href="https://duckduckgo.com/?q=%22'+ chosenWord +'%22+%22definition%22&ia=definition" target="_blank">' + chosenWord + '</a>';
+		let url = '<a href="https://dict.naver.com/search.nhn?dicQuery=' + chosenWord + '&query=" target="_blank">' + chosenWord + '</a>'
 		notification = '정답은 ' + url + ' 입니다.'
 		currentStreak = 0;
 		userScore = userScore - 15;
