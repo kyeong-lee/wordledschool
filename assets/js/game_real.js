@@ -36,7 +36,7 @@ let streakDifficult_YBM김_4학년_1학기_5 = 0;
 let streakDifficult_YBM김_4학년_2학기_5 = 0;
 let streakDifficult_YBM김_4학년_전체_5 = 0;
 let scoreType = 'score'
-let scoreDff = 'easy'
+let scoreDiff = 'easy'
 
 
 const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
