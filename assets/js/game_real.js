@@ -1,5 +1,43 @@
 let currentRow = 0;let nextRowBlock = 0;let score = 0;let remNotification = 0;let gameFin = 0;let gameOn = 0;let maxBlock = 5;let level = 'YBM김_4학년_전체';let difficulty = 'easy';let mustUse = '';let bestStreak = 0;let currentStreak = 0;let userScore = 0;
-let YBM김_4학년_1학기_3 = 0;let YBM김_4학년_2학기_3 = 0;let YBM김_4학년_전체_3 = 0;let YBM김_4학년_1학기_4 = 0;let YBM김_4학년_2학기_4 = 0;let YBM김_4학년_전체_4 = 0;let YBM김_4학년_1학기_5 = 0;let YBM김_4학년_2학기_5 = 0;let YBM김_4학년_전체_5 = 0;
+let scoreEasy_YBM김_4학년_1학기_3 = 0;
+let scoreEasy_YBM김_4학년_2학기_3 = 0;
+let scoreEasy_YBM김_4학년_전체_3 = 0;
+let scoreEasy_YBM김_4학년_1학기_4 = 0;
+let scoreEasy_YBM김_4학년_2학기_4 = 0;
+let scoreEasy_YBM김_4학년_전체_4 = 0;
+let scoreEasy_YBM김_4학년_1학기_5 = 0;
+let scoreEasy_YBM김_4학년_2학기_5 = 0;
+let scoreEasy_YBM김_4학년_전체_5 = 0;
+let streakEasy_YBM김_4학년_1학기_3 = 0;
+let streakEasy_YBM김_4학년_2학기_3 = 0;
+let streakEasy_YBM김_4학년_전체_3 = 0;
+let streakEasy_YBM김_4학년_1학기_4 = 0;
+let streakEasy_YBM김_4학년_2학기_4 = 0;
+let streakEasy_YBM김_4학년_전체_4 = 0;
+let streakEasy_YBM김_4학년_1학기_5 = 0;
+let streakEasy_YBM김_4학년_2학기_5 = 0;
+let streakEasy_YBM김_4학년_전체_5 = 0;
+let scoreDifficult_YBM김_4학년_1학기_3 = 0;
+let scoreDifficult_YBM김_4학년_2학기_3 = 0;
+let scoreDifficult_YBM김_4학년_전체_3 = 0;
+let scoreDifficult_YBM김_4학년_1학기_4 = 0;
+let scoreDifficult_YBM김_4학년_2학기_4 = 0;
+let scoreDifficult_YBM김_4학년_전체_4 = 0;
+let scoreDifficult_YBM김_4학년_1학기_5 = 0;
+let scoreDifficult_YBM김_4학년_2학기_5 = 0;
+let scoreDifficult_YBM김_4학년_전체_5 = 0;
+let streakDifficult_YBM김_4학년_1학기_3 = 0;
+let streakDifficult_YBM김_4학년_2학기_3 = 0;
+let streakDifficult_YBM김_4학년_전체_3 = 0;
+let streakDifficult_YBM김_4학년_1학기_4 = 0;
+let streakDifficult_YBM김_4학년_2학기_4 = 0;
+let streakDifficult_YBM김_4학년_전체_4 = 0;
+let streakDifficult_YBM김_4학년_1학기_5 = 0;
+let streakDifficult_YBM김_4학년_2학기_5 = 0;
+let streakDifficult_YBM김_4학년_전체_5 = 0;
+let scoreType = 'score'
+let scoreDuff = 'easy'
+
 
 const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
 
@@ -22,7 +60,7 @@ function showScores(modal, type, diff){
 			modalScoreHead.innerText = msHeadContent;
 			modalScoreBlock.append(modalScoreHead);
 	
-			let msBodyContent = localStorage.getItem(msHeadContent);
+			let msBodyContent = localStorage.getItem(type + diff + '_' + msHeadContent.replace(/ /g, ""));
 			let modalScoreBody = document.createElement('span');
 			modalScoreBody.className = 'msBody';
 			modalScoreBody.innerText = (msBodyContent == null)? 0 : msBodyContent;
@@ -116,13 +154,13 @@ function openModal(type, notification){
 		for(i = 0; i < 4; i++){
 			let modalScoreBlock = document.createElement('div');
 			modalScoreBlock.className = 'msBlock';
-				let msHeadContent = (i == 0)? 'SCORE' : ((i == 1)? 'TOP SCORE' : ((i == 2)? 'STREAK' : 'BEST STREAK'));
+				let msHeadContent = (i == 0)? '점수' : ((i == 1)? '최고점수' : ((i == 2)? '성공횟수' : '최고성공횟수'));
 				let modalScoreHead = document.createElement('span');
 				modalScoreHead.className = 'msHead';
 				modalScoreHead.innerText = msHeadContent;
 				modalScoreBlock.append(modalScoreHead);
 				
-				let msBodyContent = (i == 0)? userScore : ((i == 1)? localStorage.getItem('score' + difficulty + level) : ((i == 2)? currentStreak : localStorage.getItem('streak' + difficulty + level)));
+				let msBodyContent = (i == 0)? userScore : ((i == 1)? localStorage.getItem('score' + difficulty + '_' + level) : ((i == 2)? currentStreak : localStorage.getItem('streak' + difficulty + '_' + level)));
 				let modalScoreBody = document.createElement('span');
 				modalScoreBody.className = 'msBody';
 				modalScoreBody.innerText = (msBodyContent == null)? 0 : msBodyContent;
@@ -138,7 +176,7 @@ function openModal(type, notification){
 		for(i = 0; i < 2; i++){
 			let scoreType = document.createElement('div');
 			scoreType.className = 'scoreType';
-			scoreType.innerText = (i == 0)? 'SCORE' : 'STREAK';
+			scoreType.innerText = (i == 0)? '점수' : '성공횟수';
 			modal.append(scoreType);
 		}
 
@@ -223,24 +261,51 @@ function changeHelpView(){
 }
 
 function setGlobal(){
-	for(i = 1; i < 4; i++){
+	for(i = 1; i < 13; i++){
 		for(j = 3; j < 6; j++){
-			let lsItem = (i == 1)? 'YBM김_4학년_1학기_' + j : ((i == 2)? 'YBM김_4학년_2학기_' + j : 'YBM김_4학년_전체_' + j );
+			let lsItem = (i == 1) ? 'scoreeasy_YBM김_4학년_1학기_' + j : ((i == 2)? 'scoreeasy_YBM김_4학년_2학기_' + j : ((i=== 3) ? 'scoreeasy_YBM김_4학년_전체_' + j  : ((i=== 4) ? 'scoredifficult_YBM김_4학년_1학기_' + j  : ((i=== 5) ? 'scoredifficult_YBM김_4학년_2학기_' + j : ((i=== 6) ? 'scoredifficult_YBM김_4학년_전체_' + j : ((i === 7) ? 'streakeasy_YBM김_4학년_1학기_' + j : ((i === 8) ? 'streakeasy_YBM김_4학년_2학기_' + j : ((i === 9) ? 'streakeasy_YBM김_4학년_전체_' + j  : ((i === 10) ? 'streakdifficult_YBM김_4학년_1학기_' + j : ((i === 11) ? 'streakdifficult_YBM김_4학년_2학기_' + j : 'streakdifficult_YBM김_4학년_전체_' + j ))))))))))     
 			if (localStorage.getItem(lsItem) === null) {
 				localStorage.setItem(lsItem, 0);
 			}
 		}
 	}
 
-	YBM김_4학년_1학기_3 = localStorage.getItem('YBM김_4학년_1학기_3');
-	YBM김_4학년_2학기_3 = localStorage.getItem('YBM김_4학년_2학기_3');
-	YBM김_4학년_전체_3 = localStorage.getItem('YBM김_4학년_전체_3');
-	YBM김_4학년_1학기_4 = localStorage.getItem('YBM김_4학년_1학기_4');
-	YBM김_4학년_2학기_4 = localStorage.getItem('YBM김_4학년_2학기_4');
-	YBM김_4학년_전체_4 = localStorage.getItem('YBM김_4학년_전체_4');
-	YBM김_4학년_1학기_5 = localStorage.getItem('YBM김_4학년_1학기_5');
-	YBM김_4학년_2학기_5 = localStorage.getItem('YBM김_4학년_2학기_5');
-	YBM김_4학년_전체_5 = localStorage.getItem('YBM김_4학년_전체_5');
+	scoreEasy_YBM김_4학년_1학기_3 = localStorage.getItem('scoreeasy_YBM김_4학년_1학기_3')
+	scoreEasy_YBM김_4학년_2학기_3 = localStorage.getItem('scoreeasy_YBM김_4학년_2학기_3')
+	scoreEasy_YBM김_4학년_전체_3 = localStorage.getItem('scoreeasy_YBM김_4학년_전체_3')
+	scoreEasy_YBM김_4학년_1학기_4 = localStorage.getItem('scoreeasy_YBM김_4학년_1학기_4')
+	scoreEasy_YBM김_4학년_2학기_4 = localStorage.getItem('scoreeasy_YBM김_4학년_2학기_4')
+	scoreEasy_YBM김_4학년_전체_4 = localStorage.getItem('scoreeasy_YBM김_4학년_전체_4')
+	scoreEasy_YBM김_4학년_1학기_5 = localStorage.getItem('scoreeasy_YBM김_4학년_1학기_5')
+	scoreEasy_YBM김_4학년_2학기_5 = localStorage.getItem('scoreeasy_YBM김_4학년_2학기_5')
+	scoreEasy_YBM김_4학년_전체_5 = localStorage.getItem('scoreeasy_YBM김_4학년_전체_5')
+	streakEasy_YBM김_4학년_1학기_3 = localStorage.getItem('streakeasy_YBM김_4학년_1학기_3')
+	streakEasy_YBM김_4학년_2학기_3 = localStorage.getItem('streakeasy_YBM김_4학년_2학기_3')
+	streakEasy_YBM김_4학년_전체_3 = localStorage.getItem('streakeasy_YBM김_4학년_전체_3')
+	streakEasy_YBM김_4학년_1학기_4 = localStorage.getItem('streakeasy_YBM김_4학년_1학기_4')
+	streakEasy_YBM김_4학년_2학기_4 = localStorage.getItem('streakeasy_YBM김_4학년_2학기_4')
+	streakEasy_YBM김_4학년_전체_4 = localStorage.getItem('streakeasy_YBM김_4학년_전체_4')
+	streakEasy_YBM김_4학년_1학기_5 = localStorage.getItem('streakeasy_YBM김_4학년_1학기_5')
+	streakEasy_YBM김_4학년_2학기_5 = localStorage.getItem('streakeasy_YBM김_4학년_2학기_5')
+	streakEasy_YBM김_4학년_전체_5 = localStorage.getItem('streakeasy_YBM김_4학년_전체_5')
+	scoreDifficult_YBM김_4학년_1학기_3 = localStorage.getItem('scoredifficult_YBM김_4학년_1학기_3')
+	scoreDifficult_YBM김_4학년_2학기_3 = localStorage.getItem('scoredifficult_YBM김_4학년_2학기_3')
+	scoreDifficult_YBM김_4학년_전체_3 = localStorage.getItem('scoredifficult_YBM김_4학년_전체_3')
+	scoreDifficult_YBM김_4학년_1학기_4 = localStorage.getItem('scoredifficult_YBM김_4학년_1학기_4')
+	scoreDifficult_YBM김_4학년_2학기_4 = localStorage.getItem('scoredifficult_YBM김_4학년_2학기_4')
+	scoreDifficult_YBM김_4학년_전체_4 = localStorage.getItem('scoredifficult_YBM김_4학년_전체_4')
+	scoreDifficult_YBM김_4학년_1학기_5 = localStorage.getItem('scoredifficult_YBM김_4학년_1학기_5')
+	scoreDifficult_YBM김_4학년_2학기_5 = localStorage.getItem('scoredifficult_YBM김_4학년_2학기_5')
+	scoreDifficult_YBM김_4학년_전체_5 = localStorage.getItem('scoredifficult_YBM김_4학년_전체_5')
+	streakDifficult_YBM김_4학년_1학기_3 = localStorage.getItem('streakdifficult_YBM김_4학년_1학기_3')
+	streakDifficult_YBM김_4학년_2학기_3 = localStorage.getItem('streakdifficult_YBM김_4학년_2학기_3')
+	streakDifficult_YBM김_4학년_전체_3 = localStorage.getItem('streakdifficult_YBM김_4학년_전체_3')
+	streakDifficult_YBM김_4학년_1학기_4 = localStorage.getItem('streakdifficult_YBM김_4학년_1학기_4')
+	streakDifficult_YBM김_4학년_2학기_4 = localStorage.getItem('streakdifficult_YBM김_4학년_2학기_4')
+	streakDifficult_YBM김_4학년_전체_4 = localStorage.getItem('streakdifficult_YBM김_4학년_전체_4')
+	streakDifficult_YBM김_4학년_1학기_5 = localStorage.getItem('streakdifficult_YBM김_4학년_1학기_5')
+	streakDifficult_YBM김_4학년_2학기_5 = localStorage.getItem('streakdifficult_YBM김_4학년_2학기_5')
+	streakDifficult_YBM김_4학년_전체_5 = localStorage.getItem('streakdifficult_YBM김_4학년_전체_5')
 
 	gameFin = 0;
 	currentRow = 0;
@@ -267,7 +332,7 @@ function startMenu(){
 		let j = i;
 		let menuBtn = document.createElement('button');
 		menuBtn.className = 'menuBtn';
-		menuBtn.innerText = (i == 0)? maxBlock + ' 글자' : ((i == 1)? level : ((i == 2)? difficulty : ((i == 3)? '최고점수: 업데이트 예정' : ((i == 4)? '도움말' : '게임시작'))));
+		menuBtn.innerText = (i == 0)? maxBlock + ' 글자' : ((i == 1)? level : ((i == 2)? difficulty : ((i == 3)? '최고점수' : ((i == 4)? '도움말' : '게임시작'))));
 		menuBtn.j = i;
 
 		menuBtn.addEventListener("click", menuClick);
@@ -605,19 +670,19 @@ function checkAnswer(wordRow, answer){
 	}
 
 	if(score === maxBlock){
-		let scoreLevel = (level == 'beginner')? 1 : ((level == 'intermediate')? 2 : ((level == 'advanced')? 3 : 4));
+		let scoreLevel = (level == 'YBM김_4학년_1학기') ? 1 : ((level == 'YBM김_4학년_2학기')? 1 : 2);
 		userScore = userScore + ((scoreLevel * 10) - ((scoreLevel + 1) * currentRow));
 
-		if(userScore > localStorage.getItem('score' + difficulty + level)){
-			localStorage.setItem('score' + difficulty + level, userScore);
+		if(userScore > localStorage.getItem('score' + difficulty + '_' + level)){
+			localStorage.setItem('score' + difficulty + '_' + level, userScore);
 		}
 
 		currentStreak++;
-		if(currentStreak > localStorage.getItem('streak' + difficulty + level)){
-			localStorage.setItem('streak' + difficulty + level, currentStreak);
+		if(currentStreak > localStorage.getItem('streak' + difficulty + '_' + level)){
+			localStorage.setItem('streak' + difficulty + '_' + level, currentStreak);
 		}
 
-		let notification = 'Well done, you won! Click to play again';
+		let notification = '잘했어요! 다시 플레이해보세요.';
 		gameOver();
 
 		setTimeout(function(){
@@ -650,7 +715,7 @@ function submitWord(wordRow){
 				for(i = 0; i < mustUse.length; i++){
 					if(!answer.includes(mustUse[i])){
 						remNotification = 0;
-						document.getElementById('notification').innerText = 'You must use found characters';
+						document.getElementById('notification').innerText = '찾은 알파벳을 활용하세요.';
 						return;
 					}
 				}
