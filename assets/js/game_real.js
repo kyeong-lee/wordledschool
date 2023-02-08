@@ -1,43 +1,111 @@
-let currentRow = 0;let nextRowBlock = 0;let score = 0;let remNotification = 0;let gameFin = 0;let gameOn = 0;let maxBlock = 5;let level = 'YBM김_4학년_전체';let difficulty = 'easy';let mustUse = '';let bestStreak = 0;let currentStreak = 0;let userScore = 0;
-let scoreEasy_YBM김_4학년_1학기_3 = 0;
-let scoreEasy_YBM김_4학년_2학기_3 = 0;
-let scoreEasy_YBM김_4학년_전체_3 = 0;
-let scoreEasy_YBM김_4학년_1학기_4 = 0;
-let scoreEasy_YBM김_4학년_2학기_4 = 0;
-let scoreEasy_YBM김_4학년_전체_4 = 0;
-let scoreEasy_YBM김_4학년_1학기_5 = 0;
-let scoreEasy_YBM김_4학년_2학기_5 = 0;
-let scoreEasy_YBM김_4학년_전체_5 = 0;
-let streakEasy_YBM김_4학년_1학기_3 = 0;
-let streakEasy_YBM김_4학년_2학기_3 = 0;
-let streakEasy_YBM김_4학년_전체_3 = 0;
-let streakEasy_YBM김_4학년_1학기_4 = 0;
-let streakEasy_YBM김_4학년_2학기_4 = 0;
-let streakEasy_YBM김_4학년_전체_4 = 0;
-let streakEasy_YBM김_4학년_1학기_5 = 0;
-let streakEasy_YBM김_4학년_2학기_5 = 0;
-let streakEasy_YBM김_4학년_전체_5 = 0;
-let scoreDifficult_YBM김_4학년_1학기_3 = 0;
-let scoreDifficult_YBM김_4학년_2학기_3 = 0;
-let scoreDifficult_YBM김_4학년_전체_3 = 0;
-let scoreDifficult_YBM김_4학년_1학기_4 = 0;
-let scoreDifficult_YBM김_4학년_2학기_4 = 0;
-let scoreDifficult_YBM김_4학년_전체_4 = 0;
-let scoreDifficult_YBM김_4학년_1학기_5 = 0;
-let scoreDifficult_YBM김_4학년_2학기_5 = 0;
-let scoreDifficult_YBM김_4학년_전체_5 = 0;
-let streakDifficult_YBM김_4학년_1학기_3 = 0;
-let streakDifficult_YBM김_4학년_2학기_3 = 0;
-let streakDifficult_YBM김_4학년_전체_3 = 0;
-let streakDifficult_YBM김_4학년_1학기_4 = 0;
-let streakDifficult_YBM김_4학년_2학기_4 = 0;
-let streakDifficult_YBM김_4학년_전체_4 = 0;
-let streakDifficult_YBM김_4학년_1학기_5 = 0;
-let streakDifficult_YBM김_4학년_2학기_5 = 0;
-let streakDifficult_YBM김_4학년_전체_5 = 0;
-let scoreType = 'score'
-let scoreDiff = 'easy'
+let currentRow = 0;let nextRowBlock = 0;let score = 0;let remNotification = 0;let gameFin = 0;let gameOn = 0;
+let maxBlock = 5; let grade = 3; let level = '일학기'
 
+
+function downloadSelect(){
+	if(grade == 3){
+    var wb = XLSX.utils.book_new();
+	var newWorksheet3 = excelHandler.getWorksheet();
+	XLSX.utils.book_append_sheet(wb, newWorksheet3, excelHandler.getSheetName3());
+	var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+	saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), excelHandler.getExcelFileName3());
+	}else if(grade == 4){
+		var wb = XLSX.utils.book_new();
+		var newWorksheet4 = excelHandler.getWorksheet();
+		XLSX.utils.book_append_sheet(wb, newWorksheet4, excelHandler.getSheetName4());
+		var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+		saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), excelHandler.getExcelFileName4());
+	}else if(grade == 5){
+		var wb = XLSX.utils.book_new();
+		var newWorksheet5 = excelHandler.getWorksheet();
+		XLSX.utils.book_append_sheet(wb, newWorksheet5, excelHandler.getSheetName5());
+		var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+		saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), excelHandler.getExcelFileName5());
+	}else{
+		var wb = XLSX.utils.book_new();
+		var newWorksheet6 = excelHandler.getWorksheet();
+		XLSX.utils.book_append_sheet(wb, newWorksheet6, excelHandler.getSheetName6());
+		var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+		saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), excelHandler.getExcelFileName6());
+	}}
+var excelHandler = {
+		getExcelFileName3 : function(){
+		    return '3학년 영어단어목록.xlsx';
+		},
+		getExcelFileName4 : function(){
+		    return '4학년 영어단어목록.xlsx';
+		},
+		getExcelFileName5 : function(){
+		    return '5학년 영어단어목록.xlsx';
+		},
+		getExcelFileName6 : function(){
+		    return '6학년 영어단어목록.xlsx';
+		},
+		getSheetName3 : function(){
+			return '3학년 영어단어';
+		},
+		getSheetName4 : function(){
+			return '4학년 영어단어';
+		},
+		getSheetName5 : function(){
+			return '5학년 영어단어';
+		},
+		getSheetName6 : function(){
+			return '6학년 영어단어';
+		},
+		getExcelData : function(){
+			let wordsList= document.createElement('script');
+			wordsList.id = 'wordsList';
+			wordsList.src = './assets/js/words/grade3.js';
+			let data = [['세글자_1학기' , '세글자_2학기', '네글자_1학기' , '네글자_2학기', '다섯글자_1학기' , '다섯글자_2학기']
+						,['', '', '', '', '', '']
+						,[세글자_일학기[0], 세글자_이학기[0], 네글자_일학기[0], 네글자_이학기[0], 다섯글자_일학기[0], 다섯글자_이학기[0]]
+						,[세글자_일학기[1], 세글자_이학기[1], 네글자_일학기[1], 네글자_이학기[1], 다섯글자_일학기[1], 다섯글자_이학기[1]]
+						,[세글자_일학기[2], 세글자_이학기[2], 네글자_일학기[2], 네글자_이학기[2], 다섯글자_일학기[2], 다섯글자_이학기[2]]
+						,[세글자_일학기[3], 세글자_이학기[3], 네글자_일학기[3], 네글자_이학기[3], 다섯글자_일학기[3], 다섯글자_이학기[3]]
+						,[세글자_일학기[4], 세글자_이학기[4], 네글자_일학기[4], 네글자_이학기[4], 다섯글자_일학기[4], 다섯글자_이학기[4]]
+						,[세글자_일학기[5], 세글자_이학기[5], 네글자_일학기[5], 네글자_이학기[5], 다섯글자_일학기[5], 다섯글자_이학기[5]]
+						,[세글자_일학기[6], 세글자_이학기[6], 네글자_일학기[6], 네글자_이학기[6], 다섯글자_일학기[6], 다섯글자_이학기[6]]
+						,[세글자_일학기[7], 세글자_이학기[7], 네글자_일학기[7], 네글자_이학기[7], 다섯글자_일학기[7], 다섯글자_이학기[7]]
+						,[세글자_일학기[8], 세글자_이학기[8], 네글자_일학기[8], 네글자_이학기[8], 다섯글자_일학기[8], 다섯글자_이학기[8]]
+						,[세글자_일학기[9], 세글자_이학기[9], 네글자_일학기[9], 네글자_이학기[9], 다섯글자_일학기[9], 다섯글자_이학기[9]]
+						,[세글자_일학기[10], 세글자_이학기[10], 네글자_일학기[10], 네글자_이학기[10], 다섯글자_일학기[10], 다섯글자_이학기[10]]
+						,[세글자_일학기[11], 세글자_이학기[11], 네글자_일학기[11], 네글자_이학기[11], 다섯글자_일학기[11], 다섯글자_이학기[11]]
+						,[세글자_일학기[12], 세글자_이학기[12], 네글자_일학기[12], 네글자_이학기[12], 다섯글자_일학기[12], 다섯글자_이학기[12]]
+						,[세글자_일학기[13], 세글자_이학기[13], 네글자_일학기[13], 네글자_이학기[13], 다섯글자_일학기[13], 다섯글자_이학기[13]]
+						,[세글자_일학기[14], 세글자_이학기[14], 네글자_일학기[14], 네글자_이학기[14], 다섯글자_일학기[14], 다섯글자_이학기[14]]
+						,[세글자_일학기[15], 세글자_이학기[15], 네글자_일학기[15], 네글자_이학기[15], 다섯글자_일학기[15], 다섯글자_이학기[15]]
+						,[세글자_일학기[16], 세글자_이학기[16], 네글자_일학기[16], 네글자_이학기[16], 다섯글자_일학기[16], 다섯글자_이학기[16]]
+						,[세글자_일학기[17], 세글자_이학기[17], 네글자_일학기[17], 네글자_이학기[17], 다섯글자_일학기[17], 다섯글자_이학기[17]]
+						,[세글자_일학기[18], 세글자_이학기[18], 네글자_일학기[18], 네글자_이학기[18], 다섯글자_일학기[18], 다섯글자_이학기[18]]
+						,[세글자_일학기[19], 세글자_이학기[19], 네글자_일학기[19], 네글자_이학기[19], 다섯글자_일학기[19], 다섯글자_이학기[19]]
+						,[세글자_일학기[20], 세글자_이학기[20], 네글자_일학기[20], 네글자_이학기[20], 다섯글자_일학기[20], 다섯글자_이학기[20]]
+						,[세글자_일학기[21], 세글자_이학기[21], 네글자_일학기[21], 네글자_이학기[21], 다섯글자_일학기[21], 다섯글자_이학기[21]]
+						,[세글자_일학기[22], 세글자_이학기[22], 네글자_일학기[22], 네글자_이학기[22], 다섯글자_일학기[22], 다섯글자_이학기[22]]
+						,[세글자_일학기[23], 세글자_이학기[23], 네글자_일학기[23], 네글자_이학기[23], 다섯글자_일학기[23], 다섯글자_이학기[23]]
+						,[세글자_일학기[24], 세글자_이학기[24], 네글자_일학기[24], 네글자_이학기[24], 다섯글자_일학기[24], 다섯글자_이학기[24]]	
+					]
+			return data
+	    },
+		getWorksheet : function(){
+			var wscols = [
+				{ width: 18 },
+				{ width: 18 },
+				{ width: 18 },
+				{ width: 18 },
+				{ width: 18 },
+				{ width: 18 }]
+			let workSheet = XLSX.utils.aoa_to_sheet(this.getExcelData())
+			workSheet["!cols"] = wscols;
+			return workSheet
+		}
+}
+function s2ab(s) { 
+    var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
+    var view = new Uint8Array(buf);  //create uint8array as viewer
+    for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+    return buf;    
+}
 
 const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
 
@@ -45,29 +113,7 @@ let container = document.createElement('div');
 container.id = 'container';
 document.body.append(container);
 
-startMenu();
-
-function showScores(modal, type, diff){
-	let msBlock = document.createElement('div');
-	msBlock.id = 'msBlock';
-	modal.append(msBlock);
-	for(i = 0; i < 3; i++){
-		let modalScoreBlock = document.createElement('div');
-		modalScoreBlock.className = 'msBlock';
-			let msHeadContent = (i == 0)? 'YBM김_4학년_1학기' : ((i == 1)? 'YBM김_4학년_2학기' : 'YBM김_4학년_전체')
-			let modalScoreHead = document.createElement('span');
-			modalScoreHead.className = 'msHead';
-			modalScoreHead.innerText = msHeadContent;
-			modalScoreBlock.append(modalScoreHead);
-	
-			let msBodyContent = localStorage.getItem(type + diff + '_' + msHeadContent.replace(/ /g, ""));
-			let modalScoreBody = document.createElement('span');
-			modalScoreBody.className = 'msBody';
-			modalScoreBody.innerText = (msBodyContent == null)? 0 : msBodyContent;
-			modalScoreBlock.append(modalScoreBody);
-		msBlock.append(modalScoreBlock);
-	}
-}
+startMenu()
 
 function showHelp(modal, type){
 	let exampleWords = ['SUNNY', 'WORLD', 'TITAN'];
@@ -75,7 +121,7 @@ function showHelp(modal, type){
 	mhBlock.id = 'mhBlock';
 	mhbHead = document.createElement('div');
 	mhbHead.className = 'mhbHead';
-	mhbHead.innerText = (type == '게임')? '단어를 맞추기 위한 6번의 도전 기회가 있습니다.\n\n4학년에서 배운 단어만 입력할 수 있습니다.\n정답을 제출하려면 ENTER키를 눌러주세요.\n\n매 시도마다 알파벳의 색이 변합니다.' : '\n4학년 1학기와 4학년 2학기, \n그리고 4학년 전체 범위를 선택할 수 있습니다.\n\n';
+	mhbHead.innerText = (type == '게임')? '단어를 맞추기 위한 6번의 도전 기회가 있습니다.\n\n해당 학년에서 배운 단어만 입력할 수 있습니다.\n정답을 제출하려면 ENTER키를 눌러주세요.\n\n매 시도마다 알파벳의 색이 변합니다.' : '\n해당 학년에서 배운 단어가 기억나지 않는다면 위 버튼을 클릭하여 단어목록을 다운받을 수 있습니다.\n\n 다른 학년의 단어를 보고싶다면 처음 화면에서 학년을 바꿔주세요.\n\n';
 	mhBlock.append(mhbHead);
 
 	let mhbBody = document.createElement('div');
@@ -102,21 +148,37 @@ function showHelp(modal, type){
 			mhbBody.append(exampleRow);
 		}
 	}else{
-		mhbBody.className = 'mhbHead';
-		mhbBody.innerText = '\n쉬운 난이도(easy)와 어려운 난이도(difficult)중에서 고를 수 있습니다. \n\n어려운 난이도에서는 이전 시도에서 발견한 초록색 타일과 노란색 을 반드시 사용하여 답을 적어야 합니다.';
-	}
-	mhBlock.append(mhbBody);
-	modal.append(mhBlock);
+		opendownload()
 }
+	mhBlock.append(mhbBody);
+	modal.append(mhBlock);}
+
+function opendownload(){
+	let modalBtn = document.createElement('button');
+	modalBtn.className = 'modalBtn';
+	modalBtn.innerText = grade + '학년 영어단어 다운로드';
+	modalBtn.addEventListener('click', downloadSelect);
+	modal.append(modalBtn);
+	}
 
 function openModal(type, notification){
 	let modal = document.createElement('div');
 	modal.id = 'modal';
-	if(type == 'levelSelect'){
+	
+	if(type == 'gradeSelect'){
+		for(i = 3; i < 7; i++){
+			let modalBtn = document.createElement('button');
+			modalBtn.className = 'modalBtnL';
+			modalBtn.innerText = i + '학년';
+			modalBtn.addEventListener('click', gradeSelect);
+			modal.append(modalBtn);
+		}
+	}
+	else if(type == 'levelSelect'){
 		for(i = 0; i < 3; i++){
 			let modalBtn = document.createElement('button');
 			modalBtn.className = 'modalBtn';
-			modalBtn.innerText = (i == 0)? 'YBM김_4학년_1학기' : ((i == 1)? 'YBM김_4학년_2학기' : 'YBM김_4학년_전체');
+			modalBtn.innerText = (i == 0)? '일학기' : ((i == 1)? '이학기' : '전학기');
 			modalBtn.addEventListener('click', levelSelect);
 			modal.append(modalBtn);
 		}
@@ -125,7 +187,7 @@ function openModal(type, notification){
 		for(i = 3; i < 6; i++){
 			let modalBtn = document.createElement('button');
 			modalBtn.className = 'modalBtnL';
-			modalBtn.innerText = i + ' 글자';
+			modalBtn.innerText = i + '글자';
 			modalBtn.addEventListener('click', charSelect);
 			modal.append(modalBtn);
 			setTimeout(function(){
@@ -133,69 +195,21 @@ function openModal(type, notification){
 			}, 1);
 		}
 	}
-	else if(type == 'difficultySelect'){
-		for(i = 0; i < 2; i++){
-			let modalBtn = document.createElement('button');
-			modalBtn.className = 'modalBtnL';
-			modalBtn.innerText = (i == 0)? 'Easy' : 'Difficult';
-			modalBtn.addEventListener('click', difficultySelect);
-			modal.append(modalBtn);
-			setTimeout(function(){
-				modal.style.cssText = 'opacity: 1';
-			}, 1);
-		}
-	}
-	else if(type == 'endScore'){
+	else if(type == 'end'){
 		let message = document.createElement('span');
 		message.className = 'modalMessage';
 		message.innerHTML = notification;
 		modal.append(message);
-
-		for(i = 0; i < 4; i++){
-			let modalScoreBlock = document.createElement('div');
-			modalScoreBlock.className = 'msBlock';
-				let msHeadContent = (i == 0)? '점수' : ((i == 1)? '최고점수' : ((i == 2)? '성공횟수' : '최고성공횟수'));
-				let modalScoreHead = document.createElement('span');
-				modalScoreHead.className = 'msHead';
-				modalScoreHead.innerText = msHeadContent;
-				modalScoreBlock.append(modalScoreHead);
-				
-				let msBodyContent = (i == 0)? userScore : ((i == 1)? localStorage.getItem('score' + difficulty + '_' + level) : ((i == 2)? currentStreak : localStorage.getItem('streak' + difficulty + '_' + level)));
-				let modalScoreBody = document.createElement('span');
-				modalScoreBody.className = 'msBody';
-				modalScoreBody.innerText = (msBodyContent == null)? 0 : msBodyContent;
-				modalScoreBlock.append(modalScoreBody);
-			modal.append(modalScoreBlock);
-		}
 		setTimeout(function(){
 			document.addEventListener('click', restartClick);
 			document.addEventListener('keyup', restart);
 		}, 100);
 	}
-	else if(type == 'highScores'){
-		for(i = 0; i < 2; i++){
-			let scoreType = document.createElement('div');
-			scoreType.className = 'scoreType';
-			scoreType.innerText = (i == 0)? '점수' : '성공횟수';
-			modal.append(scoreType);
-		}
-
-		for(i = 0; i < 4; i++){
-			let scoreBtn = document.createElement('button');
-			scoreBtn.className = (i == 0)? 'scoreBtnActive' : 'scoreBtn';
-			scoreBtn.innerText = (i == 0 || i == 2)? 'EASY' : 'DIFFICULT';
-			scoreBtn.j = i;
-			scoreBtn.modal = modal;
-			scoreBtn.addEventListener('click', changeScore);
-			modal.append(scoreBtn);
-		}
-		showScores(modal, 'score', 'easy');
-	}
-	else if(type == '도움말'){
+	else if(type == 'help'){
 		for(i = 0; i < 2; i++){
 			let helpBtn = document.createElement('button');
 			helpBtn.className = (i == 0)? 'helpBtnActive' : 'helpBtn';
-			helpBtn.innerText = (i == 0 || i == 2)? '게임' : '옵션';
+			helpBtn.innerText = (i == 0 || i == 2)? '게임' : '단어목록';
 			helpBtn.j = i;
 			helpBtn.modal = modal;
 			helpBtn.addEventListener('click', changeHelpView);
@@ -234,7 +248,7 @@ function addLogo(){
 	logo.className = 'logo';
 	logo.addEventListener("click", logoClick);
 
-	let domName = '4학년영어단어';
+	let domName = '초등학교영어단어';
 	for(i = 0; i < domName.length; i++){
 		let spanClass = (i == 0 || i % 2 == 0)? 'logo_green' : 'logo_gold';
 		let logoSpan = document.createElement('span');
@@ -256,61 +270,15 @@ function changeHelpView(){
 		showHelp(modal, '게임');
 	}else{
 		document.getElementById('mhBlock').remove();
-		showHelp(modal, '옵션');
+		showHelp(modal, '단어목록');
 	}
 }
 
 function setGlobal(){
-	for(i = 1; i < 13; i++){
-		for(j = 3; j < 6; j++){
-			let lsItem = (i == 1) ? 'scoreeasy_YBM김_4학년_1학기_' + j : ((i == 2)? 'scoreeasy_YBM김_4학년_2학기_' + j : ((i=== 3) ? 'scoreeasy_YBM김_4학년_전체_' + j  : ((i=== 4) ? 'scoredifficult_YBM김_4학년_1학기_' + j  : ((i=== 5) ? 'scoredifficult_YBM김_4학년_2학기_' + j : ((i=== 6) ? 'scoredifficult_YBM김_4학년_전체_' + j : ((i === 7) ? 'streakeasy_YBM김_4학년_1학기_' + j : ((i === 8) ? 'streakeasy_YBM김_4학년_2학기_' + j : ((i === 9) ? 'streakeasy_YBM김_4학년_전체_' + j  : ((i === 10) ? 'streakdifficult_YBM김_4학년_1학기_' + j : ((i === 11) ? 'streakdifficult_YBM김_4학년_2학기_' + j : 'streakdifficult_YBM김_4학년_전체_' + j ))))))))))     
-			if (localStorage.getItem(lsItem) === null) {
-				localStorage.setItem(lsItem, 0);
-			}
-		}
-	}
-
-	scoreEasy_YBM김_4학년_1학기_3 = localStorage.getItem('scoreeasy_YBM김_4학년_1학기_3')
-	scoreEasy_YBM김_4학년_2학기_3 = localStorage.getItem('scoreeasy_YBM김_4학년_2학기_3')
-	scoreEasy_YBM김_4학년_전체_3 = localStorage.getItem('scoreeasy_YBM김_4학년_전체_3')
-	scoreEasy_YBM김_4학년_1학기_4 = localStorage.getItem('scoreeasy_YBM김_4학년_1학기_4')
-	scoreEasy_YBM김_4학년_2학기_4 = localStorage.getItem('scoreeasy_YBM김_4학년_2학기_4')
-	scoreEasy_YBM김_4학년_전체_4 = localStorage.getItem('scoreeasy_YBM김_4학년_전체_4')
-	scoreEasy_YBM김_4학년_1학기_5 = localStorage.getItem('scoreeasy_YBM김_4학년_1학기_5')
-	scoreEasy_YBM김_4학년_2학기_5 = localStorage.getItem('scoreeasy_YBM김_4학년_2학기_5')
-	scoreEasy_YBM김_4학년_전체_5 = localStorage.getItem('scoreeasy_YBM김_4학년_전체_5')
-	streakEasy_YBM김_4학년_1학기_3 = localStorage.getItem('streakeasy_YBM김_4학년_1학기_3')
-	streakEasy_YBM김_4학년_2학기_3 = localStorage.getItem('streakeasy_YBM김_4학년_2학기_3')
-	streakEasy_YBM김_4학년_전체_3 = localStorage.getItem('streakeasy_YBM김_4학년_전체_3')
-	streakEasy_YBM김_4학년_1학기_4 = localStorage.getItem('streakeasy_YBM김_4학년_1학기_4')
-	streakEasy_YBM김_4학년_2학기_4 = localStorage.getItem('streakeasy_YBM김_4학년_2학기_4')
-	streakEasy_YBM김_4학년_전체_4 = localStorage.getItem('streakeasy_YBM김_4학년_전체_4')
-	streakEasy_YBM김_4학년_1학기_5 = localStorage.getItem('streakeasy_YBM김_4학년_1학기_5')
-	streakEasy_YBM김_4학년_2학기_5 = localStorage.getItem('streakeasy_YBM김_4학년_2학기_5')
-	streakEasy_YBM김_4학년_전체_5 = localStorage.getItem('streakeasy_YBM김_4학년_전체_5')
-	scoreDifficult_YBM김_4학년_1학기_3 = localStorage.getItem('scoredifficult_YBM김_4학년_1학기_3')
-	scoreDifficult_YBM김_4학년_2학기_3 = localStorage.getItem('scoredifficult_YBM김_4학년_2학기_3')
-	scoreDifficult_YBM김_4학년_전체_3 = localStorage.getItem('scoredifficult_YBM김_4학년_전체_3')
-	scoreDifficult_YBM김_4학년_1학기_4 = localStorage.getItem('scoredifficult_YBM김_4학년_1학기_4')
-	scoreDifficult_YBM김_4학년_2학기_4 = localStorage.getItem('scoredifficult_YBM김_4학년_2학기_4')
-	scoreDifficult_YBM김_4학년_전체_4 = localStorage.getItem('scoredifficult_YBM김_4학년_전체_4')
-	scoreDifficult_YBM김_4학년_1학기_5 = localStorage.getItem('scoredifficult_YBM김_4학년_1학기_5')
-	scoreDifficult_YBM김_4학년_2학기_5 = localStorage.getItem('scoredifficult_YBM김_4학년_2학기_5')
-	scoreDifficult_YBM김_4학년_전체_5 = localStorage.getItem('scoredifficult_YBM김_4학년_전체_5')
-	streakDifficult_YBM김_4학년_1학기_3 = localStorage.getItem('streakdifficult_YBM김_4학년_1학기_3')
-	streakDifficult_YBM김_4학년_2학기_3 = localStorage.getItem('streakdifficult_YBM김_4학년_2학기_3')
-	streakDifficult_YBM김_4학년_전체_3 = localStorage.getItem('streakdifficult_YBM김_4학년_전체_3')
-	streakDifficult_YBM김_4학년_1학기_4 = localStorage.getItem('streakdifficult_YBM김_4학년_1학기_4')
-	streakDifficult_YBM김_4학년_2학기_4 = localStorage.getItem('streakdifficult_YBM김_4학년_2학기_4')
-	streakDifficult_YBM김_4학년_전체_4 = localStorage.getItem('streakdifficult_YBM김_4학년_전체_4')
-	streakDifficult_YBM김_4학년_1학기_5 = localStorage.getItem('streakdifficult_YBM김_4학년_1학기_5')
-	streakDifficult_YBM김_4학년_2학기_5 = localStorage.getItem('streakdifficult_YBM김_4학년_2학기_5')
-	streakDifficult_YBM김_4학년_전체_5 = localStorage.getItem('streakdifficult_YBM김_4학년_전체_5')
-
 	gameFin = 0;
 	currentRow = 0;
-	nextRowBlock = 0;
 	score = 0;
+	nextRowBlock = 0;
 	remNotification = 0;
 	mustUse = '';
 }
@@ -321,18 +289,18 @@ function startMenu(){
 	}
 	let script = document.createElement('script');
 	script.id = 'wordscript';
-	script.src = './assets/js/words/' + maxBlock + '.js';
+	script.src = './assets/js/words/' + 'grade' + grade + '.js';
 	document.body.prepend(script);
 	setGlobal();
 	container.innerHTML = '';
 	addLogo();
 	let menu = document.createElement('div');
 	menu.id = 'menu';
-	for(i = 0; i < 6; i++){
+	for(i = 0; i < 5; i++){
 		let j = i;
 		let menuBtn = document.createElement('button');
 		menuBtn.className = 'menuBtn';
-		menuBtn.innerText = (i == 0)? maxBlock + ' 글자' : ((i == 1)? level : ((i == 2)? difficulty : ((i == 3)? '최고점수' : ((i == 4)? '도움말' : '게임시작'))));
+		menuBtn.innerText = (i == 0)? grade + '학년' : ((i == 1)? level : ((i == 2)? maxBlock + '글자' : ((i == 3)?  '도움말' : '게임시작')));
 		menuBtn.j = i;
 
 		menuBtn.addEventListener("click", menuClick);
@@ -349,15 +317,21 @@ function gameOver(){
 	document.removeEventListener('click', logoClick, false);
 	document.removeEventListener('click', menuClick, false);
 	document.removeEventListener('click', enterClick, false);
-	document.removeEventListener('click', levelModal, false);
-	document.removeEventListener('click', difficultyModal, false);
 	document.removeEventListener('click', closeModal, false);
 }
 
 function gameStart(){
 	setGlobal();
 	container.innerHTML = '';
-	let wordType = (level == 'YBM김_4학년_1학기')? YBM김_4학년_1학기 : ((level == 'YBM김_4학년_2학기')? YBM김_4학년_2학기 : YBM김_4학년_전체);
+	let wordType = 세글자_일학기
+	if(maxBlock == 3){
+		wordType = (level == '일학기')? 세글자_일학기 : ((level == '이학기')? 세글자_이학기 : 세글자_전학기);
+	}else if(maxBlock == 4){
+		wordType = (level == '일학기')? 네글자_일학기 : ((level == '이학기')? 네글자_이학기 : 네글자_전학기);
+	}else{
+		wordType = (level == '일학기')? 다섯글자_일학기 : ((level == '이학기')? 다섯글자_이학기 : 다섯글자_전학기);
+	}
+	console.log(wordType)
 	let rand = Math.floor(Math.random() * wordType.length);
 	chosenWord = wordType[rand].toUpperCase();
 
@@ -365,28 +339,13 @@ function gameStart(){
 
 	let navBar = document.createElement('div');
 	navBar.className = 'nav_bar';
-		let difficultySelect = document.createElement('button');
-		difficultySelect.id = 'difficultySelectBtn';
-		difficultySelect.className = 'btn';
-		difficultySelect.innerText = difficulty;
-		difficultySelect.addEventListener('click', difficultyModal);
-		navBar.append(difficultySelect);
-
 		let giveUpBtn = document.createElement('button');
 		giveUpBtn.id = 'giveUpBtn';
 		giveUpBtn.className = 'btn';
-		giveUpBtn.innerText = '포기';
+		giveUpBtn.innerText = '포기하기';
 		giveUpBtn.addEventListener('click', quitQlick);
 		navBar.append(giveUpBtn);
 
-		let levelSelect = document.createElement('button');
-		levelSelect.id = 'levelSelectBtn';
-		levelSelect.className = 'btn';
-		levelSelect.innerText = level;
-		levelSelect.addEventListener('click', levelModal = function(event){
-			openModal('levelSelect');
-		})
-		navBar.append(levelSelect);
 	container.append(navBar);
 
 	let gameArea = document.createElement('div');
@@ -474,14 +433,11 @@ function quitQlick(){
 	if(gameFin == 0){
 		let url = '<a href="https://dict.naver.com/search.nhn?dicQuery=' + chosenWord + '&query=" target="_blank">' + chosenWord + '</a>'
 		notification = '정답은 ' + url + ' 입니다.'
-		currentStreak = 0;
-		userScore = userScore - 15;
 		gameOver();
-
-		setTimeout(function(){
-			openModal('endScore', notification);
-		}, 250);
 	}
+	setTimeout(function(){
+		openModal('end', notification);
+	}, 250);
 }
 
 function enterClick(){
@@ -500,8 +456,8 @@ function logoClick(event) {
 
 function menuClick(event) {
 	let j = event.currentTarget.j;
-	let modalType = (j == 0)? 'charSelect' : ((j == 1)? 'levelSelect' : ((j == 2)? 'difficultySelect' : ((j == 3)? 'highScores' : '도움말')));
-	if(j < 5){
+	let modalType = (j == 0)? 'gradeSelect' : (j == 1)? 'levelSelect' : ((j == 2)? 'charSelect' : ((j == 3)? 'help' : 'gameStart'));
+	if(j < 4){
 		openModal(modalType);
 	}else{
 		gameOn = 1;
@@ -523,42 +479,14 @@ function restartClick(){
 	gameStart();
 }
 
-function difficultySelect(){
-	difficulty = this.innerText.toLowerCase();
-	if(gameOn == 1){
-		userScore = 0;
-		currentStreak = 0;
-		gameOver();
-		document.removeEventListener('keyup', restart, false);
-		gameStart();
-	}else{
-		startMenu();
-	}
-}
 function charSelect(){
 	maxBlock = parseInt(this.innerText.replace(/\D/g, ''));
 	if(gameOn == 1){
-		userScore = 0;
-		currentStreak = 0;
 		gameOver();
 		document.removeEventListener('keyup', restart, false);
 		gameStart();
 	}else{
 		startMenu();
-	}
-}
-
-function changeScore(){
-	let j = event.currentTarget.j;
-	let modal = event.currentTarget.modal;
-	document.getElementsByClassName('scoreBtnActive')[0].className = 'scoreBtn';
-	this.className = 'scoreBtnActive';
-	if(j == 0 || j == 1){
-		document.getElementById('msBlock').remove();
-		showScores(modal, 'score', this.innerText.toLowerCase());
-	}else{
-		document.getElementById('msBlock').remove();
-		showScores(modal, 'streak', this.innerText.toLowerCase());
 	}
 }
 
@@ -581,11 +509,20 @@ function deleteClick(){
 	}
 }
 
+function gradeSelect(){
+	grade = this.innerText.replace(/ /g, "")[0];
+	if(gameOn == 1){
+		gameOver();
+		document.removeEventListener('keyup', restart, false);
+		gameStart();
+	}else{
+		startMenu();
+	}
+}
+
 function levelSelect(){
 	level = this.innerText.replace(/ /g, "");
 	if(gameOn == 1){
-		userScore = 0;
-		currentStreak = 0;
 		gameOver();
 		document.removeEventListener('keyup', restart, false);
 		gameStart();
@@ -670,34 +607,21 @@ function checkAnswer(wordRow, answer){
 	}
 
 	if(score === maxBlock){
-		let scoreLevel = (level == 'YBM김_4학년_1학기') ? 1 : ((level == 'YBM김_4학년_2학기')? 1 : 2);
-		userScore = userScore + ((scoreLevel * 10) - ((scoreLevel + 1) * currentRow));
-
-		if(userScore > localStorage.getItem('score' + difficulty + '_' + level)){
-			localStorage.setItem('score' + difficulty + '_' + level, userScore);
-		}
-
-		currentStreak++;
-		if(currentStreak > localStorage.getItem('streak' + difficulty + '_' + level)){
-			localStorage.setItem('streak' + difficulty + '_' + level, currentStreak);
-		}
-
-		let notification = '잘했어요! 다시 플레이해보세요.';
+		let url = '<a href="https://duckduckgo.com/?q=%22'+ chosenWord +'%22+%22definition%22&ia=definition" target="_blank">' + chosenWord + '</a>';
+		let notification = '잘했어요! 정답은 ' + url + " 입니다.";
 		gameOver();
 
 		setTimeout(function(){
-			openModal('endScore', notification);
+			openModal('end', notification);
 		}, 250);
 	}
 	else if(currentRow == 5){
 		let url = '<a href="https://duckduckgo.com/?q=%22'+ chosenWord +'%22+%22definition%22&ia=definition" target="_blank">' + chosenWord + '</a>';
-		let notification = '정답은 ' + url + ' 입니다.';
-		userScore = userScore - 10;
-		currentStreak = 0;
+		let notification = '아쉬워요. 정답은 ' + url + ' 입니다.';
 		gameOver();
 
 		setTimeout(function(){
-			openModal('endScore', notification);
+			openModal('end', notification);
 		}, 250);
 	}
 	else{
@@ -710,24 +634,11 @@ function checkAnswer(wordRow, answer){
 function submitWord(wordRow){
 	if(nextRowBlock > 0 && nextRowBlock % maxBlock == 0){
 		let answer = wordRow.innerText.replace(/[\n\r]/g, '');
-		if(YBM김_4학년_전체.includes(answer)){
-			if(difficulty == 'difficult'){
-				for(i = 0; i < mustUse.length; i++){
-					if(!answer.includes(mustUse[i])){
-						remNotification = 0;
-						document.getElementById('notification').innerText = '찾은 알파벳을 활용하세요.';
-						return;
-					}
-				}
-			}
-			checkAnswer(wordRow, answer);		
-		}else{
-			remNotification = 0;
-			document.getElementById('notification').innerText = '4학년에서 배운 단어가 아니에요.';
-		}
+		checkAnswer(wordRow, answer);		
+
 	}else{
 		remNotification = 0;
-		document.getElementById('notification').innerText = '정답은' + maxBlock + ' 글자입니다.'
+		document.getElementById('notification').innerText = '정답은 ' + maxBlock + ' 글자입니다.'
 	}
 }
 
